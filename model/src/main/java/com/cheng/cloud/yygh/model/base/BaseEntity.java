@@ -1,0 +1,50 @@
+package com.cheng.cloud.yygh.model.base;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @User Administrator
+ * @Classname BaseEntity
+ * @Project yygh_parent
+ * @Description TODO
+ * @Author wpcheng
+ * @Create 2023-01-02-21:24
+ * @Version 1.0
+ */
+@Data
+public class BaseEntity implements Serializable {
+
+    @ApiModelProperty(value = "id")
+    @TableId(type = IdType.AUTO)
+    private Long id;
+
+
+    @ApiModelProperty(value = "创建时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @TableField("create_time")
+    private Data createTime;
+
+    @ApiModelProperty(value = "修改时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @TableField("update_time")
+    private Data updateTime;
+
+    @ApiModelProperty(value = "0：未删除；1：已删除")
+    @TableField("is_delete")
+    private Byte isDelete;
+
+
+    @ApiModelProperty(value = "其他参数")
+    @TableField(exist = false)
+    private Map param = new HashMap<String,Object>();
+
+}
