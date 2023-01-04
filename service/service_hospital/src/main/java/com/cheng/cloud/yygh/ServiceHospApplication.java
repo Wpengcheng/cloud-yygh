@@ -2,6 +2,7 @@ package com.cheng.cloud.yygh;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @User Administrator
@@ -14,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.cheng.cloud")
 public class ServiceHospApplication {
 
     public static void main(String[] args) {

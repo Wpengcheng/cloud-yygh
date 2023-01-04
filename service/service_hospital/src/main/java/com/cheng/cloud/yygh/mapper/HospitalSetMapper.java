@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @Create 2023-01-02-21:37
  * @Version 1.0
  */
-@Mapper
+
 public interface HospitalSetMapper extends BaseMapper<HospitalSetDto> {
 }

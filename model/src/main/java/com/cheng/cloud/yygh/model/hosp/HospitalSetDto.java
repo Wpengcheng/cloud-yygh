@@ -50,9 +50,9 @@ public class HospitalSetDto extends BaseEntity {
     @TableField("contacts_phone")
     private String contactsPhone;
 
-    @ApiModelProperty(value = "医院状态 0：解锁，1：锁定")
+    @ApiModelProperty(value = "医院状态 0：禁用，1：可用")
     @TableField("status")
-    private Byte status;
+    private Integer status;
 
 
 

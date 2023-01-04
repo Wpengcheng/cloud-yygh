@@ -3,11 +3,13 @@ package com.cheng.cloud.yygh.model.base;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,20 +33,21 @@ public class BaseEntity implements Serializable {
     @ApiModelProperty(value = "创建时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField("create_time")
-    private Data createTime;
+    private Date createTime;
 
     @ApiModelProperty(value = "修改时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @TableField("update_time")
-    private Data updateTime;
+    private Date updateTime;
 
     @ApiModelProperty(value = "0：未删除；1：已删除")
+    @TableLogic//逻辑删除
     @TableField("is_delete")
-    private Byte isDelete;
+    private Integer isDelete;
 
 
-    @ApiModelProperty(value = "其他参数")
-    @TableField(exist = false)
-    private Map param = new HashMap<String,Object>();
+//    @ApiModelProperty(value = "其他参数")
+//    @TableField(exist = false)
+//    private Map param = new HashMap<String,Object>();
 
 }

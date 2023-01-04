@@ -13,4 +13,7 @@ import com.cheng.cloud.yygh.model.hosp.HospitalSetDto;
  * @Version 1.0
  */
 public interface HospitalSetService extends IService<HospitalSetDto> {
+
+
+
 }
