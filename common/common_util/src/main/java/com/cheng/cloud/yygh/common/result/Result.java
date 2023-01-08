@@ -25,7 +25,7 @@ public class Result<T>{
     private String message;
 
     @ApiModelProperty("返回数据")
-    private T date;
+    private T data;
 
     public Result(){
 
@@ -34,7 +34,7 @@ public class Result<T>{
     protected static <T> Result<T> build(T data){
         Result<T> result = new Result<>();
         if (result!=null){
-            result.setDate(data);
+            result.setData(data);
         }
         return result;
     }

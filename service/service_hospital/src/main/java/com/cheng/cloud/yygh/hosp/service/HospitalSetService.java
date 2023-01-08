@@ -1,4 +1,4 @@
-package com.cheng.cloud.yygh.service;
+package com.cheng.cloud.yygh.hosp.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.cheng.cloud.yygh.model.hosp.HospitalSetDto;

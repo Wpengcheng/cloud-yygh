@@ -42,8 +42,8 @@ public class BaseEntity implements Serializable {
 
     @ApiModelProperty(value = "0：未删除；1：已删除")
     @TableLogic//逻辑删除
-    @TableField("is_delete")
-    private Integer isDelete;
+    @TableField("is_deleted")
+    private Integer isDeleted;
 
 
 //    @ApiModelProperty(value = "其他参数")

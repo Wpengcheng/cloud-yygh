@@ -1,12 +1,11 @@
-package com.cheng.cloud.yygh.controller;
+package com.cheng.cloud.yygh.hosp.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cheng.cloud.yygh.commom.utils.MD5;
-import com.cheng.cloud.yygh.common.exception.YyghException;
 import com.cheng.cloud.yygh.common.result.Result;
 import com.cheng.cloud.yygh.model.hosp.HospitalSetDto;
-import com.cheng.cloud.yygh.service.HospitalSetService;
+import com.cheng.cloud.yygh.hosp.service.HospitalSetService;
 import com.cheng.cloud.yygh.vo.hosp.HospitalSetQueryVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Random;
-
-import static com.sun.corba.se.impl.util.RepositoryId.cache;
 
 /**
  * @User Administrator
@@ -31,6 +28,7 @@ import static com.sun.corba.se.impl.util.RepositoryId.cache;
 @Api(tags = "医院设置管理")
 @RestController
 @RequestMapping("/admin/hosp/hospitalSet/")
+@CrossOrigin//允许跨域访问
 public class HospitalSetController {
 
 
@@ -44,8 +42,8 @@ public class HospitalSetController {
     }
 
     @ApiOperation("逻辑删除")
-    @DeleteMapping("delete/{id}")
-    public Result DeleteById(@PathVariable Long id){
+    @PostMapping("deleteHospSetById/{id}")
+    public Result deleteHospSetById(@PathVariable Long id){
         boolean flag = hospitalSetService.removeById(id);
         if (flag){
             return Result.ok();
@@ -55,16 +53,18 @@ public class HospitalSetController {
     }
 
     @ApiOperation("分页条件查询")
-    @PostMapping("queryByPage")
-    public Result queryByPage(@RequestBody(required = false) HospitalSetQueryVo hospitalSetQueryVo){//@RequestBody(required = false) 接收前端传递的json数据，可以为null
-        Page<HospitalSetDto> page = new Page<>(1, 10);
+    @PostMapping("queryByPage/{current}/{limit}")
+    public Result queryByPage(@PathVariable int current,
+                              @PathVariable int limit,
+                              @RequestBody(required = false) HospitalSetQueryVo hospitalSetQueryVo){//@RequestBody(required = false) 接收前端传递的json数据，可以为null
+        Page<HospitalSetDto> page = new Page<>(current, limit);
         QueryWrapper<HospitalSetDto> queryWrapper = new QueryWrapper<>();
         String hosname = hospitalSetQueryVo.getHosname();
         String hoscode = hospitalSetQueryVo.getHoscode();
-        if (StringUtils.isEmpty(hosname)){
+        if (!StringUtils.isEmpty(hosname)){
             queryWrapper.like("hosname",hosname);
         }
-        if (StringUtils.isEmpty(hoscode)){
+        if (!StringUtils.isEmpty(hoscode)){
             queryWrapper.eq("hoscode",hoscode);
 
         }
@@ -108,7 +108,7 @@ public class HospitalSetController {
     }
 
     @ApiOperation("批量删除医院设置信息")
-    @DeleteMapping ("deleteHospitalSetByIds")
+    @PostMapping ("batchDeleteHospitalSet")
     public Result deleteHospitalSetByIds(@RequestBody List<Long> ids){
         boolean flag = hospitalSetService.removeByIds(ids);
         if (flag){

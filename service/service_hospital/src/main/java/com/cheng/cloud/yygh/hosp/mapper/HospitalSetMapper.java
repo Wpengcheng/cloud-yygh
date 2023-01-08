@@ -1,8 +1,7 @@
-package com.cheng.cloud.yygh.mapper;
+package com.cheng.cloud.yygh.hosp.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.cheng.cloud.yygh.model.hosp.HospitalSetDto;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @User Administrator

@@ -1,10 +1,9 @@
-package com.cheng.cloud.yygh.service.impl;
+package com.cheng.cloud.yygh.hosp.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.cheng.cloud.yygh.mapper.HospitalSetMapper;
+import com.cheng.cloud.yygh.hosp.mapper.HospitalSetMapper;
 import com.cheng.cloud.yygh.model.hosp.HospitalSetDto;
-import com.cheng.cloud.yygh.service.HospitalSetService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.cheng.cloud.yygh.hosp.service.HospitalSetService;
 import org.springframework.stereotype.Service;
 
 /**
