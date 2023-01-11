@@ -79,7 +79,7 @@ public class HospitalSetController {
         //设置医院状态
         hospitalSetDto.setStatus(1);
         //生成签名秘钥
-        String md5Encode = MD5.MD5Encode(System.currentTimeMillis() + "" + new Random().nextInt(1000), "UTF-8", false);
+        String md5Encode = MD5.encrypt(System.currentTimeMillis() + "" + new Random().nextInt(1000));
         hospitalSetDto.setSignKey(md5Encode);
         boolean flag = hospitalSetService.save(hospitalSetDto);
         if (flag){

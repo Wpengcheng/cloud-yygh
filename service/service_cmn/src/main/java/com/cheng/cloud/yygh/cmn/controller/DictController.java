@@ -42,14 +42,10 @@ public class DictController {
     }
 
     @ApiOperation("导入")
-    @GetMapping("importDict")
+    @PostMapping("importDict")
     public Result importDict(MultipartFile file){
         dictService.importDict(file);
         return Result.ok();
     }
-
-
-
-
 
 }
