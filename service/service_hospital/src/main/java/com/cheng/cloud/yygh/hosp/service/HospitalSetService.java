@@ -15,5 +15,5 @@ import com.cheng.cloud.yygh.model.hosp.HospitalSetDto;
 public interface HospitalSetService extends IService<HospitalSetDto> {
 
 
-
+    String getSingKeyByHoscode(String hoscode);
 }

@@ -1,10 +1,8 @@
-package com.cheng.cloud.yygh.commom.helper;
-
+package com.atguigu.hospital.util;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cheng.cloud.yygh.commom.utils.HttpUtil;
-import com.cheng.cloud.yygh.commom.utils.MD5;
 import lombok.extern.slf4j.Slf4j;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,14 +11,15 @@ import java.util.TreeMap;
 @Slf4j
 public class HttpRequestHelper {
 
+    //private final static String signKey = "09c1ff67d1ae4999e137f34b0dff1046";
+
     public static void main(String[] args) {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("d", "4");
         paramMap.put("b", "2");
         paramMap.put("c", "3");
         paramMap.put("a", "1");
-        paramMap.put("timestamp", getTimestamp());
-        log.info(getSign(paramMap, "111111111"));
+        log.info(getSign(paramMap, ""));
     }
 
     /**
@@ -39,7 +38,6 @@ public class HttpRequestHelper {
     /**
      * 请求数据获取签名
      * @param paramMap
-     * @param signKey
      * @return
      */
     public static String getSign(Map<String, Object> paramMap, String signKey) {
@@ -61,7 +59,6 @@ public class HttpRequestHelper {
     /**
      * 签名校验
      * @param paramMap
-     * @param signKey
      * @return
      */
     public static boolean isSignEquals(Map<String, Object> paramMap, String signKey) {

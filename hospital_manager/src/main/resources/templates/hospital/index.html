@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="common/meta :: meta"></head>
 <body class="gray-bg">
 <div id="app-container" style="padding: 10px 10px;">
@@ -18,23 +18,23 @@
         <tbody>
         <tr>
             <th width="15%">医院名称</th>
-            <td width="35%"><b style="font-size: 14px" th:text="${hospital.hosname}"></b> | <span th:text="'医院等级编号：'+${ hospital.hostype}"></span></td>
+            <td width="35%"><b style="font-size: 14px" th:text="${hospital.get('hosname')}"></b> | <span th:text="'医院等级编号：'+${ hospital.get('hostype')}"></span></td>
             <th width="15%">医院logo</th>
-            <td width="35%"><img th:src="${'data:image/jpeg;base64,'+(hospital.logoData)}"  width="80"></td>
+            <td width="35%"><img th:src="${'data:image/jpeg;base64,'+(hospital.get('logoData'))}"  width="80"></td>
         </tr>
         <tr>
             <th>医院编码</th>
-            <td th:text="${hospital.hoscode}"></td>
+            <td th:text="${hospital.get('hoscode')}"></td>
             <th>地址</th>
-            <td th:text="${hospital.address}"></td>
+            <td th:text="${hospital.get('address')}"></td>
         </tr>
         <tr>
             <th>坐车路线</th>
-            <td colspan="3" th:text="${hospital.route}"></td>
+            <td colspan="3" th:text="${hospital.get('route')}"></td>
         </tr>
         <tr>
             <th>医院简介</th>
-            <td colspan="3" th:text="${hospital.intro}"></td>
+            <td colspan="3" th:text="${hospital.get('intro')}"></td>
         </tr>
         </tbody>
     </table>

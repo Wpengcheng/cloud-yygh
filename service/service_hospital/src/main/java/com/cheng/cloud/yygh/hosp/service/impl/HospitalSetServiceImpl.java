@@ -1,5 +1,6 @@
 package com.cheng.cloud.yygh.hosp.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cheng.cloud.yygh.hosp.mapper.HospitalSetMapper;
 import com.cheng.cloud.yygh.model.hosp.HospitalSetDto;
@@ -18,15 +19,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class HospitalSetServiceImpl extends ServiceImpl<HospitalSetMapper, HospitalSetDto> implements HospitalSetService {
 
-    /*
-    mybatisplus已经在ServiceImpl中已经注入了mapper，所以直接调用即可
-    @Autowired
-    protected M baseMapper;
-     */
-
-    public HospitalSetDto queryById(Long id){
-        return baseMapper.selectById(id);
+    @Override
+    public String getSingKeyByHoscode(String hoscode) {
+        QueryWrapper<HospitalSetDto> wrapper = new QueryWrapper<>();
+        wrapper.eq("hoscode",hoscode);
+        HospitalSetDto hospitalSetDto = baseMapper.selectOne(wrapper);
+        return hospitalSetDto.getSignKey();
     }
-
-
 }
